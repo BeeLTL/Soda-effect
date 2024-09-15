@@ -1,14 +1,15 @@
 name: soda_effect
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.4.1 <4.0.0'
+  sdk: ">=3.4.1 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  hovering: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +18,35 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - Assets/Images/
+    - Assets/Fonts/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poopins/Poppins-ExtraLight.ttf
+          weight: 100
+        - asset: assets/fonts/Poopins/Poppins-Thin.ttf
+          weight: 200
+        - asset: assets/fonts/Poopins/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Poopins/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poopins/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poopins/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poopins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poopins/Poppins-Black.ttf
+          weight: 800
+        - asset: assets/fonts/Poopins/Poppins-ExtraBold.ttf
+          weight: 900
+    - family: Karantina
+      fonts:
+        - asset: assets/fonts/Karantina/Karantina-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Karantina/Karantina-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Karantina/Karantina-Bold.ttf
+          weight: 700
