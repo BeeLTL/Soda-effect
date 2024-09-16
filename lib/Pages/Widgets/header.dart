@@ -10,7 +10,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50, left: 50),
+      padding: const EdgeInsets.only(top: 50, left: 250, right: 250),
       child: SizedBox(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -19,10 +19,11 @@ class Header extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  Title1,
+                  title1,
                   style: TextStyle(
                       fontFamily: "Karantina",
                       fontSize: SizeConfig.blockSizeHorizontal * 14,
+                      fontWeight: FontWeight.bold,
                       height: 0.8),
                 ),
                 Image.asset(
@@ -38,7 +39,7 @@ class Header extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      Creator,
+                      creator,
                       style: TextStyle(
                           fontFamily: "Karantina",
                           fontSize: SizeConfig.blockSizeHorizontal * 4,
@@ -52,7 +53,7 @@ class Header extends StatelessWidget {
                           style: TextStyle(),
                         ),
                         Text(
-                          DesignedBy,
+                          designedBy,
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -65,7 +66,7 @@ class Header extends StatelessWidget {
                           style: TextStyle(),
                         ),
                         Text(
-                          Creator,
+                          creator,
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],

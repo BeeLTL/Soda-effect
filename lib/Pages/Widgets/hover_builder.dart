@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:soda_effect/Providers/animation_provider.dart';
 
-class HoverBuilder extends StatefulWidget {
+class HoverBuilder extends StatelessWidget {
   const HoverBuilder({
     required this.builder,
     super.key,
@@ -10,23 +12,17 @@ class HoverBuilder extends StatefulWidget {
   final Widget Function(bool isHovered) builder;
 
   @override
-  _HoverBuilderState createState() => _HoverBuilderState();
-}
-
-class _HoverBuilderState extends State<HoverBuilder> {
-  bool _isHovered = false;
-  @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (PointerEnterEvent event) => _onHoverChanged(enabled: true),
-      onExit: (PointerExitEvent event) => _onHoverChanged(enabled: false),
-      child: widget.builder(_isHovered),
+      onEnter: (PointerEnterEvent event) =>
+          Provider.of<AnimationProvider>(context, listen: false)
+              .setHovered(true),
+      onExit: (PointerExitEvent event) =>
+          Provider.of<AnimationProvider>(context, listen: false)
+              .setHovered(false),
+      child: Consumer<AnimationProvider>(
+        builder: (context, value, child) => builder(value.ishoverd),
+      ),
     );
-  }
-
-  void _onHoverChanged({required bool enabled}) {
-    setState(() {
-      _isHovered = enabled;
-    });
   }
 }

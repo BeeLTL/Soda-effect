@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:soda_effect/Pages/Widgets/header.dart';
+import 'package:soda_effect/Pages/Widgets/rocks.dart';
 import 'package:soda_effect/Pages/Widgets/soda.dart';
-import 'package:soda_effect/Utils/constants/text_strings.dart';
 import 'package:soda_effect/Utils/device/size_config.dart';
 
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -26,10 +21,25 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
           ),
+          GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 13,
+            ),
+            itemBuilder: (context, index) {
+              return Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      width: 0.4,
+                      color: const Color(0xff1E1E1E)), // Border for grid cells
+                ),
+              );
+            },
+            itemCount: 90, // Total number of grid cells
+          ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.transparent, Color(0xFF0001)],
+                colors: [Colors.transparent, Color(0x00ff0001)],
                 stops: [0.0, 150.0 / 151.0],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
@@ -38,9 +48,9 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.transparent, Color(0xFF0001)],
+                colors: [Colors.transparent, Color(0x00ff0001)],
                 stops: [0.0, 150.0 / 151.0],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -51,14 +61,15 @@ class _MainPageState extends State<MainPage> {
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xFFCDCDCDcc), Color(0xFFCDCDCDcc)],
+                colors: [Color(0xffcdcdcdcc), Color(0xffcdcdcdcc)],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
             ),
           ),
-          Header(),
-          Center(child: Soda())
+          const Header(),
+          const Rocks(),
+          const Center(child: Soda()),
         ],
       ),
     );

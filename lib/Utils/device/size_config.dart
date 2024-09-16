@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SizeConfig {
   static late MediaQueryData _mediaQueryData;
@@ -25,12 +24,12 @@ class SizeConfig {
     safeBlockHorizontal = (screenWidth - _safeAreaHorizontal) / 100;
     safeBlockVertical = (screenHeight - _safeAreaVertical) / 100;
   }
-    static double getBottomNavigationBarHeight() {
+
+  static double getBottomNavigationBarHeight() {
     return kBottomNavigationBarHeight;
   }
 
   static double getAppBarHeight() {
     return kToolbarHeight;
   }
-
 }

@@ -24,12 +24,12 @@ class _SodaState extends State<Soda> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     animationController = AnimationController(
-      duration: const Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 430),
       vsync: this,
     );
     alignmentAnimation = Tween<Alignment>(
-      begin: Alignment(-1, 0),
-      end: Alignment(1.01, 0),
+      begin: const Alignment(0.0, 0),
+      end: const Alignment(1, 0),
     ).animate(animationController)
       ..addListener(() {
         setState(
@@ -37,8 +37,8 @@ class _SodaState extends State<Soda> with SingleTickerProviderStateMixin {
       });
 
     translationAnimation = Tween<Offset>(
-      begin: Offset(0, 0), // initial translation value
-      end: Offset(0, -100), // final translation value
+      begin: const Offset(0, 0), // initial translation value
+      end: const Offset(0, -50), // final translation value
     ).animate(animationController)
       ..addListener(() {
         setState(() {}); // update the state on animation value change
@@ -63,7 +63,7 @@ class _SodaState extends State<Soda> with SingleTickerProviderStateMixin {
       }
       return Transform.translate(
         offset: translationAnimation.value,
-        child: Container(
+        child: SizedBox(
           width: 280,
           child: Stack(children: [
             Image.asset(
@@ -72,11 +72,12 @@ class _SodaState extends State<Soda> with SingleTickerProviderStateMixin {
             BlendMask(
               blendMode: BlendMode.multiply,
               maskImage:
-                  AssetImage("Assets/Images/mockup.png"), // Mask as image
+                  const AssetImage("Assets/Images/mockup.png"), // Mask as image
               child: Image.asset(
                 "Assets/Images/bg.png",
-                alignment:
-                    isHovered ? alignmentAnimation.value : Alignment(-1, 0),
+                alignment: isHovered
+                    ? alignmentAnimation.value
+                    : const Alignment(-1, 0),
                 fit: BoxFit.fitHeight,
                 height: SizeConfig.blockSizeVertical * 56,
               ),
@@ -85,12 +86,13 @@ class _SodaState extends State<Soda> with SingleTickerProviderStateMixin {
             BlendMask(
               blendMode: BlendMode.multiply,
               maskImage:
-                  AssetImage("Assets/Images/mockup.png"), // Mask as image
+                  const AssetImage("Assets/Images/mockup.png"), // Mask as image
               child: Image.asset(
                 "Assets/Images/bg2.png",
                 opacity: opacityAnimation,
-                alignment:
-                    isHovered ? alignmentAnimation.value : Alignment(-1, 0),
+                alignment: isHovered
+                    ? alignmentAnimation.value
+                    : const Alignment(-1, 0),
                 fit: BoxFit.fitHeight,
                 height: SizeConfig.blockSizeVertical * 56,
               ),
@@ -140,7 +142,7 @@ class RenderBlendMask extends RenderProxyBox {
 
   // Load the mask image asynchronously
   void _loadMaskImage() {
-    maskImage.resolve(ImageConfiguration()).addListener(
+    maskImage.resolve(const ImageConfiguration()).addListener(
       ImageStreamListener((ImageInfo info, bool synchronousCall) {
         _maskImage = info.image;
         markNeedsPaint(); // Repaint when the mask is loaded

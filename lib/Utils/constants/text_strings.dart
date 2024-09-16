@@ -1,3 +1,3 @@
-const String Title1 = "Pure Flutter";
-const String Creator = "BeeLTL";
-const String DesignedBy = "Lun Dev";
+const String title1 = "Pure Flutter";
+const String creator = "BeeLTL";
+const String designedBy = "Lun Dev";
